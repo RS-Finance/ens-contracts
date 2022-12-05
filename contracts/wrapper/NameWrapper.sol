@@ -43,7 +43,7 @@ contract NameWrapper is
     bytes32 private constant ETH_NODE =
         0xd924c6d6935f3bf84be3da0b40fabe48800690c760c2db576028a389f1b54f89;
     bytes32 private constant ETH_LABELHASH =
-        0x4f5b812789fc606be1b3b16908db13fc7a9adf7ca72641f84d75b47069d3d7f0;
+        0x92d88c52ad061766841fb10033c75b6f62aab72c8fa9086729e0d2f7c7c7621b;
     bytes32 private constant ROOT_NODE =
         0x0000000000000000000000000000000000000000000000000000000000000000;
 
@@ -718,7 +718,7 @@ contract NameWrapper is
         uint256 tokenId,
         bytes calldata data
     ) public override returns (bytes4) {
-        //check if it's the eth registrar ERC721
+        //check if it's the arb registrar ERC721
         if (msg.sender != address(registrar)) {
             revert IncorrectTokenType();
         }
@@ -931,8 +931,8 @@ contract NameWrapper is
     ) private {
         bytes32 labelhash = keccak256(bytes(label));
         bytes32 node = _makeNode(ETH_NODE, labelhash);
-        // hardcode dns-encoded eth string for gas savings
-        bytes memory name = _addLabel(label, "\x03eth\x00");
+        // hardcode dns-encoded arb string for gas savings
+        bytes memory name = _addLabel(label, "\x03arb\x00");
         names[node] = name;
 
         uint64 expiry = uint64(registrar.nameExpires(uint256(labelhash))) + GRACE_PERIOD;
