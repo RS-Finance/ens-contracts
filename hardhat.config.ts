@@ -4,6 +4,7 @@ import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-solhint'
 import '@nomiclabs/hardhat-truffle5'
 import '@nomiclabs/hardhat-waffle'
+import "@nomiclabs/hardhat-etherscan"
 import dotenv from 'dotenv'
 import 'hardhat-abi-exporter'
 import 'hardhat-deploy'
@@ -27,7 +28,7 @@ import './tasks/seed'
 // https://github.com/motdotla/dotenv
 dotenv.config({ debug: false })
 
-let real_accounts = undefined
+let real_accounts = ['YOUR_KEY', 'YOUR_KEY']
 if (process.env.DEPLOYER_KEY) {
   real_accounts = [process.env.DEPLOYER_KEY, process.env.OWNER_KEY || process.env.DEPLOYER_KEY]
 }
@@ -108,7 +109,7 @@ const config: HardhatUserConfig = {
       default: 0,
     },
     owner: {
-      default: 1,
+      default: 0,
     },
   },
   external: {
@@ -118,6 +119,19 @@ const config: HardhatUserConfig = {
       },
     ],
   },
+  etherscan: {
+    apiKey: "VRMUC7MPSMM4G79WD69UND33XFR6ZMES3K",
+    customChains: [
+      {
+        network: "goerli",
+        chainId: 5,
+        urls: {
+          apiURL: "https://api-goerli.etherscan.io/api",
+          browserURL: "https://goerli.etherscan.io/"
+        }
+      }
+    ]
+  }
 }
 
 export default config

@@ -7,7 +7,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts()
 
   let metadataHost =
-    process.env.METADATA_HOST || 'ens-metadata-service.appspot.com'
+    process.env.METADATA_HOST || 'metadata.arbitrum.domains'
 
   if (network.name === 'localhost') {
     metadataHost = 'http://localhost:8080'

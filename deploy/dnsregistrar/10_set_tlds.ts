@@ -6,7 +6,8 @@ const tld_map = {
   mainnet: ['xyz'],
   ropsten: ['xyz'],
   localhost: ['xyz'],
-  goerli: [
+  goerli: ['xyz']
+  /*goerli: [
     'exposed',
     'target',
     'rocher',
@@ -1218,7 +1219,7 @@ const tld_map = {
     'foundation',
     'market',
     'netbank',
-  ],
+  ],*/
 }
 
 const ZERO_HASH =
