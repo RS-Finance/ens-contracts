@@ -28,7 +28,7 @@ import './tasks/seed'
 // https://github.com/motdotla/dotenv
 dotenv.config({ debug: false })
 
-let real_accounts = ['YOUR_KEY', 'YOUR_KEY']
+let real_accounts = undefined
 if (process.env.DEPLOYER_KEY) {
   real_accounts = [process.env.DEPLOYER_KEY, process.env.OWNER_KEY || process.env.DEPLOYER_KEY]
 }
@@ -60,13 +60,13 @@ const config: HardhatUserConfig = {
       chainId: 3,
       accounts: real_accounts,
     },
+    // goerli: {
+    //   url: `https://goerli.infura.io/v3/0722a322db3e472881be79bebc2e994c`,
+    //   tags: ['legacy', 'use_root'],
+    //   chainId: 5,
+    //   accounts: real_accounts,
+    // },
     goerli: {
-      url: `https://goerli.infura.io/v3/0722a322db3e472881be79bebc2e994c`,
-      tags: ['test', 'legacy', 'use_root'],
-      chainId: 5,
-      accounts: real_accounts,
-    },
-    mainnet: {
       url: `https://goerli-rollup.arbitrum.io/rpc`,
       tags: ['legacy', 'use_root'],
       chainId: 421613,

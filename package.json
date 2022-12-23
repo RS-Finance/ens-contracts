@@ -6,6 +6,7 @@
     "test": "hardhat test",
     "test:local": "hardhat --network localhost test",
     "lint": "hardhat check",
+    "deploy": "npx hardhat deploy --network goerli",
     "build": "rm -rf ./build/deploy ./build/hardhat.config.js && hardhat compile && tsc",
     "prepublishOnly": "yarn build",
     "pub": "yarn publish --access public"
